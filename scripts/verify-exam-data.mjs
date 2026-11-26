@@ -38,8 +38,8 @@ let rationaleCount = 0, questionCount = 0;
 for (const [slug, expected] of Object.entries(exams)) {
   const html = await readFile(new URL("../prepmaterials/" + slug + "/index.html", import.meta.url), "utf8");
   const members = questionShape(html);
-  const configured = Number(html.match(/expected\\s*:\\s*(\\d+)/)?.[1]);
-  const minutes = Number(html.match(/minutes\\s*:\\s*(\\d+)/)?.[1]);
+  const configured = Number(html.match(/expected\s*:\s*(\d+)/)?.[1]);
+  const minutes = Number(html.match(/minutes\s*:\s*(\d+)/)?.[1]);
   assert.equal(members.length, expected, slug + " question count");
   assert.equal(configured, expected, slug + " configured expected count");
   assert.ok(minutes > 0, slug + " timer configuration");
