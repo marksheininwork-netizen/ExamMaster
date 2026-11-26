@@ -18,6 +18,8 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
+      - name: Verify exam bank sizes and timers
+        run: node scripts/verify-exam-data.mjs
       - uses: actions/configure-pages@v5
         with:
           enablement: true
